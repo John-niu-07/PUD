@@ -17,15 +17,6 @@ from torch.utils.tensorboard import SummaryWriter
 from torchvision import models
 import torch.nn as nn
 
-def aug(dataset, b):
-    dataset_ = list()
-    for i in range(len(dataset)):
-        img, label, flag = dataset[i]
-        for j in range(b):
-            dataset_.append((img, label, flag))
-    return dataset_
-
-
 def get_model(opt):
     netC = None
     optimizerC = None
