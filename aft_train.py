@@ -128,7 +128,7 @@ def unlearning_process(netC, netD, optimizer, train_dl, adv = True):
 
             # unlearning backdoor
             loss_pent = 0
-            loss = cleaned_loss + 0.03 * posioned_loss
+            loss = cleaned_loss + 0.003 * posioned_loss
 
             # adding regularity item of coefficients for maintaining performance of model
             for name1, param1 in netC.named_parameters():
@@ -138,7 +138,7 @@ def unlearning_process(netC, netD, optimizer, train_dl, adv = True):
                     if name1 == name2:
                         #print("what")
                         #print(torch.abs(grad[name1]))
-                        loss_pent += 1e-2 * (torch.abs(param1 - param2)).sum()
+                        loss_pent += 1e-4 * (torch.abs(param1 - param2)).sum()
                         #* torch.abs(grad[name1])
 
             
@@ -259,20 +259,13 @@ def eval(netC, test_dl, opt, tf_writer, epoch, netG=None, netM=None):
                 if torch.argmax(preds_clean[i]) == targets[i]:
                     ac[targets[i].item()] += 1
 
-            inputs_tl = []
-            label_tl = []
             inputs_nt = []
             label_nt = []
             for i in range(len(targets)):
-                if False:
-                    # print("ok")
-                    inputs_tl.append(inputs[i])
-                    label_tl.append(targets[i])
-                else:
+                if targets[i].item() != opt.target_label:
                     inputs_nt.append(inputs[i])
                     label_nt.append(targets[i])
-            #inputs_tl = torch.stack(inputs_tl, 0)
-            #targets_tl = torch.stack(label_tl, 0)
+                    
             inputs_nt = torch.stack(inputs_nt, 0)
             total_bd += len(inputs_nt)
             targets_nt = torch.stack(label_nt, 0)
@@ -452,16 +445,10 @@ def eval_warp(
             grid_temps = (identity_grid + opt.s * noise_grid / opt.input_height) * opt.grid_rescale
             grid_temps = torch.clamp(grid_temps, -1, 1)
 
-            inputs_tl = []
-            label_tl = []
             inputs_nt = []
             label_nt = []
             for i in range(len(targets)):
-                if targets[i].item() == opt.target_label:
-                    # print("ok")
-                    inputs_tl.append(inputs[i])
-                    label_tl.append(targets[i])
-                else:
+                if targets[i].item() != opt.target_label:
                     inputs_nt.append(inputs[i])
                     label_nt.append(targets[i])
             inputs_nt = torch.stack(inputs_nt, 0)
