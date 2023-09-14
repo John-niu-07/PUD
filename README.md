@@ -12,12 +12,12 @@ This paper finds an intriguing connection between backdoor attacks and adversari
 its adversarial examples have similar behaviors as its triggered images. 
 ![Image](backdoor_feat_ill.png)
 
-Based on these observations, a novel **Progressive Backdoor Erasing (PBE)** algorithm is proposed to
+Based on these observations, a novel **Progressive Unified Defense (PUD)** algorithm is proposed to
 progressively purify the infected model by leveraging untargeted adversarial attacks.
 
 This is an implementation of Towards Unified Robustness Against BothBackdoor and Adversarial Attacks in Pytorch. This repository includes:
 - Training and evaluation code.
-- Progressive Backdoor Erasing (PBE) algorithm used in the paper.
+- Progressive Unified Defense (PUD) algorithm used in the paper.
 
 
 ## Requirements
