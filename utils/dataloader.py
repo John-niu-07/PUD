@@ -301,19 +301,18 @@ def get_dataset(opt, train=True):
                 transforms.RandomResizedCrop(224),
                 transforms.RandomVerticalFlip(),
                 transforms.ToTensor(),
-                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])  # 归一化处理
+                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])  
             ])
-            dataset = datasets.ImageFolder('./imagenette2/train', transform_train)
+            dataset = datasets.ImageFolder('./imagenet/train', transform_train)
 
         else:
             transform_test = transforms.Compose([
                 transforms.Resize(256),
                 transforms.CenterCrop(224),
                 transforms.ToTensor(),
-                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])  # 归一化处理
-                # 需要更多数据预处理，自己查
+                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]) 
             ])
-            dataset = datasets.ImageFolder('./imagenette2/test', transform_test)
+            dataset = datasets.ImageFolder('./imagenet/test', transform_test)
 
     else:
         raise Exception("Invalid dataset")
