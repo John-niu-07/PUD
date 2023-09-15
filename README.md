@@ -8,12 +8,16 @@
 ## Introduction
 This is the official code of **Towards Unified Robustness Against Both Backdoor and Adversarial Attacks**.
 
-This paper finds an intriguing connection between backdoor attacks and adversarial attacks: for a model planted with backdoors,
-its adversarial examples have similar behaviors as its triggered images. 
-![Image](backdoor_feat_ill.png)
+A novel **Progressive Unified Defense (PUD)** algorithm is proposed to defend against backdoor and adversarial attacks simultaneously.
+our PUD has a progressive model purification scheme to jointly erase backdoors and enhance the model's adversarial robustness. At the early stage, the adversarial examples of infected models are utilized to erase backdoors. With the backdoor gradually erased, our model purification can naturally turn into a stage to boost the model's robustness against adversarial attacks. Besides, our PUD algorithm can effectively identify poisoned images, which allows the initial extra dataset not to be completely clean.
 
-Based on these observations, a novel **Progressive Unified Defense (PUD)** algorithm is proposed to
-progressively purify the infected model by leveraging untargeted adversarial attacks.
+
+This paper extends our CVPR2023 paper (PBE) in three ways. 
+(1) A teacher-student mechanism is proposed to improve the model robustness against both backdoor and adversarial attacks. 
+(2) A data filtering scheme is adopted to complement the data purification of PBE. 
+(3) Different from PBE which only uses clean images to erase backdoors, our PUD also utilizes the identified \emph{poisoned} images to further erase backdoors through \emph{machine unlearning} schemes. 
+
+
 
 This is an implementation of Towards Unified Robustness Against BothBackdoor and Adversarial Attacks in Pytorch. This repository includes:
 - Training and evaluation code.
