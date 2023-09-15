@@ -48,11 +48,11 @@ where the parameters are the following:
 
 
 ## Run Backdoor Defense, i.e., erasing the backdoor and producing a purified model.
-In this paper, we discuss two defensive settings. (1) The first one follows the setting of the **model repair** defense methods, where we just have an infected model and a clean extra dataset but cannot access the training data. (2) The second one follows the setting of the **data filtering** defense methods, where we can access the training data and do not need to have a clean extra dataset. Note that we do not know which training images are poisoned. 
+In this paper, we discuss two defensive settings. (1) The first one follows the setting of the **model repairing** defense, where we just have an infected model and a clean extra dataset but cannot access the training data. (2) The second one follows the setting of the **data filtering** defense, where we can access the training data and do not need to have a clean extra dataset. Note that we do not know which training images are poisoned. 
 
 For the second defensive setting, we propose a **Progressive Unified Defense (PUD)** method, as shown in Algorithm 1. 
 
-Regarding the first defensive setting, we drop the *Initialization* step and use the known *clean* extra dataset. And then, we simply skip the step-3 and only need to run the iteration once, i.e., just run step-1 and step-2 once, which is called **Adversarial Fine-Tuning (AFT)** in this paper.
+Regarding the first defensive setting, we drop the *Initialization* step and use the known *clean* extra dataset. And then, we simply run step-1 and step-2 once, which is called **Adversarial Fine-Tuning (AFT)** in this paper.
 
 ```bash
 $ python PUD.py --dataset <datasetName> --attack_mode <attackMode> --trigger_type <triggertype> 
