@@ -6,7 +6,7 @@
 
 
 ## Introduction
-
+This is the official code of **Towards Unified Robustness Against Both Backdoor and Adversarial Attacks**.
 
 This paper finds an intriguing connection between backdoor attacks and adversarial attacks: for a model planted with backdoors,
 its adversarial examples have similar behaviors as its triggered images. 
