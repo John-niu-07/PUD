@@ -15,7 +15,7 @@ our PUD has a progressive model purification scheme to jointly erase backdoors a
 This paper extends our CVPR2023 paper (PBE) in three ways. 
 (1) A teacher-student mechanism is proposed to improve the model robustness against both backdoor and adversarial attacks. 
 (2) A data filtering scheme is adopted to complement the data purification of PBE. 
-(3) Different from PBE which only uses clean images to erase backdoors, our PUD also utilizes the identified \emph{poisoned} images to further erase backdoors through \emph{machine unlearning} schemes. 
+(3) Different from PBE which only uses clean images to erase backdoors, our PUD also utilizes the identified poisoned images to further erase backdoors through machine unlearning schemes. 
 
 
 
